@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>B超数据导入</title>
+    <link rel="import" href="inlinePart/head.html?__inline">
+</head>
+<body ms-controller="mean">
+	<div class="form-horizontal">
+	  <div class="form-group">
+	    <label for="username" class="col-sm-2 control-label">姓名</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="username" ms-duplex-string="username" placeholder="姓名">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-2 control-label">性别</label>
+	    <div class="col-sm-10">
+	      	<label class="radio-inline">
+			  	<input type="radio" name="gender" id="genderMale" ms-duplex-string="gender" value="男"> 男
+			</label>
+			<label class="radio-inline">
+			  	<input type="radio" name="gender" id="genderfeMale" ms-duplex-string="gender" value="女"> 女
+			</label>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="age" class="col-sm-2 control-label">年龄</label>
+	    <div class="col-sm-10">
+	      <input type="number" class="form-control" id="age" ms-duplex-string="age" placeholder="年龄">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="tel" class="col-sm-2 control-label">电话</label>
+	    <div class="col-sm-10">
+	      <input type="tel" class="form-control" id="tel" ms-duplex-string="tel" placeholder="电话">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="addr" class="col-sm-2 control-label">住址</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="addr" ms-duplex-string="addr" placeholder="住址">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="hepatobiliary" class="col-sm-2 control-label">肝胆</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="hepatobiliary" ms-duplex-string="hepatobiliary" placeholder="肝胆">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="gallbladder" class="col-sm-2 control-label">胆囊</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="gallbladder"  ms-duplex-string="gallbladder" placeholder="胆囊">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="pancreas" class="col-sm-2 control-label">胰腺</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="pancreas" ms-duplex-string="pancreas" placeholder="胰腺">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="spleen" class="col-sm-2 control-label">脾脏</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="spleen" ms-duplex-string="spleen" placeholder="脾脏">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="kidney" class="col-sm-2 control-label">肾脏</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="kidney" ms-duplex-string="kidney" placeholder="肾脏">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="Btest" class="col-sm-2 control-label">B超诊断</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="Btest" ms-duplex-string="Btest" placeholder="B超诊断">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="doctor" class="col-sm-2 control-label">诊断医生</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="doctor" ms-duplex-string="doctor" placeholder="诊断医生">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="date" class="col-sm-2 control-label">日期</label>
+	    <div class="col-sm-10">
+	      <input type="date" class="form-control" id="date" ms-duplex-string="date" placeholder="日期">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="Bpic" class="col-sm-2 control-label">B超图片</label>
+	    <div class="col-sm-10">
+	      <input type="file" accept="image/gif, image/jpeg, image/x-png" class="form-control" id="Bpic" placeholder="B超图片">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+	      <button ms-click='showCanvas' class="btn btn-default">预览</button>
+	      <button ms-click='clearField' class="btn btn-default">清空</button>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- canvas遮罩层 -->
+	<div class="preShow" ms-visible='isCanvasShow'>
+		<div>
+			<div class="canvasArea">
+				<canvas id='reportCanvas' width="600" height="700"></canvas>
+			</div>
+			
+			<div class="buttonArea">
+				<button ms-click="downLoadJpg" class="btn btn-default">导出jpg</button>
+	      		<button ms-click="closeCanvas" class="btn btn-default">关闭</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 文件搜索工具 -->
+	<input style="display:none;" ms-on-change='saveFile(this)' id="fileDialog" type="file" nwdirectory />
+	<!-- b超图片 -->
+	<canvas style="display:none;" width="500" height="500" id="bCanvas" />
+
+<script src="/internalM/index/index.js"></script>
+</body>
+</html>

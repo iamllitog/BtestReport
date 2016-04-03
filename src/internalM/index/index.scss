@@ -1,0 +1,32 @@
+@import "compass";
+@import "/internalM/publicAsset/base";
+
+//主体部分
+div.form-horizontal{
+  padding:20px;
+}
+
+//遮罩层
+.preShow{
+  position: fixed;
+  top: 0;
+  right:0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(#000, 0.7);
+  text-align: center;
+  padding-top : 30px;
+
+  > div{
+    margin: 0 auto;
+    background-color:#FFF;
+    width: 600px;
+    height: 750px;
+  }
+
+  .canvasArea{
+    width: 100%;
+    height: 700px;
+    overflow-y: scroll;
+  }
+}
